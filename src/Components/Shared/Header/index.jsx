@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import bars from "../../../assets/img/svg/bars.svg";
 import darkLogo from "../../../assets/img/logo_dark.png";
 import whiteLogo from "../../../assets/img/logo_white.png";
@@ -6,20 +6,15 @@ import team from "../../../assets/img/team-1.png";
 import flag from "../../../assets/img/flag.png";
 import author from "../../../assets/img/author-nav.jpg";
 import { Bell, HelpCircle, Inbox, Mail, Settings } from "react-feather";
-import { LayoutContext } from "../../../context/LayoutContextProvider";
 
 const Header = () => {
-  const { sidebarToggle, setSidebarToggle } = useContext(LayoutContext);
-  const sidebarToggleAction = () => {
-    setSidebarToggle(!sidebarToggle);
-  };
+
   return (
     <>
       <header className="header-top">
         <nav className="navbar navbar-light">
           <div className="navbar-left">
             <button
-              onClick={sidebarToggleAction}
               className="sidebar-toggle border-0"
             >
               <img className="svg" src={bars} alt="img" />

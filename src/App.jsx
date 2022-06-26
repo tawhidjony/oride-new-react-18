@@ -1,11 +1,13 @@
 import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import WithLogin from "./Route/WithLogin";
+import { BrowserRouter , Routes, Route } from "react-router-dom";
+import AllRoutes from "./Route/AllRoutes";
 const App = () => {
   return (
-    <Router>
-      <WithLogin />
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<AllRoutes />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

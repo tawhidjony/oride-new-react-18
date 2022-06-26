@@ -1,16 +1,25 @@
 import React from "react";
-import LayoutContextProvider from "../../context/LayoutContextProvider";
-import Body from "../Shared/Body";
+import { Outlet } from "react-router-dom";
+import Footer from "../Shared/Footer";
 import Header from "../Shared/Header";
 import MobileSearch from "../Shared/Header/Mobile.Search";
+import Sidebar from "../Shared/Sidebar";
 
-const WithAdminLayout = ({ children }) => {
+const WithAdminLayout = () => {
   return (
-    <LayoutContextProvider>
+    <>
       <MobileSearch />
       <Header />
-      <Body children={children} />
-    </LayoutContextProvider>
+      <main className="main-content">
+        <Sidebar />
+        <div className={`contents expanded`}>
+          <div className="container-fluid">
+            <Outlet />
+          </div>
+        </div>
+        <Footer />
+      </main>
+    </>
   );
 };
 
