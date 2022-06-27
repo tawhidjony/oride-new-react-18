@@ -1,8 +1,23 @@
 import React from "react";
-import signuptop from "../../assets/img/svg/signuptop.svg"
-import signupbottom from "../../assets/img/svg/signupbottom.svg"
-import signupIllustration from "../../assets/img/svg/signupIllustration.svg"
+import signuptop from "../../assets/img/svg/signuptop.svg";
+import signupbottom from "../../assets/img/svg/signupbottom.svg";
+import signupIllustration from "../../assets/img/svg/signupIllustration.svg";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hook/useAuth";
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { auth, setAuth } = useAuth();
+  const from = location.state?.from?.pathname || "/";
+
+  const onSubmitLogin = () => {
+    localStorage.setItem("auth", true);
+    setAuth("true");
+    if (auth === "true") {
+      navigate(from, { replace: true });
+    }
+  };
+
   return (
     <>
       <div className="signUP-admin">
@@ -11,11 +26,7 @@ const Login = () => {
             <div className="col-xl-4 col-lg-5 col-md-5 p-0">
               <div className="signUP-admin-left signIn-admin-left position-relative">
                 <div className="signUP-overlay">
-                  <img
-                    className="svg signupTop"
-                    src={signuptop}
-                    alt="img"
-                  />
+                  <img className="svg signupTop" src={signuptop} alt="img" />
                   <img
                     className="svg signupBottom"
                     src={signupbottom}
@@ -113,9 +124,16 @@ const Login = () => {
                               <a href="forget-password.html">forget password</a>
                             </div>
                             <div className="button-group d-flex pt-1 justify-content-md-start justify-content-center">
-                              <button className="btn btn-primary btn-default btn-squared mr-15 text-capitalize lh-normal px-50 py-15 signIn-createBtn ">
+                              <button
+                                onClick={onSubmitLogin}
+                                className="btn btn-primary btn-default btn-squared mr-15 text-capitalize lh-normal px-50 py-15 signIn-createBtn "
+                              >
                                 sign in
                               </button>
+                            </div>
+                            <div>
+                              <Link to="/">Dashboard</Link>
+                              <Link to="/users">Users</Link>
                             </div>
                           </div>
                         </div>

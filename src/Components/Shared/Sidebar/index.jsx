@@ -9,8 +9,8 @@ const Sidebar = () => {
     {
       name: "Dashboard",
       key: "dashboard",
-      url: "/dashboard",
-      active: pathname === "/dashboard" && "active",
+      url: "/",
+      active: pathname === "/" && "active",
       icon: <Home className="feather feather-message-square nav-icon" />,
     },
     {
@@ -19,7 +19,7 @@ const Sidebar = () => {
       url: "/users",
       active: pathname === "/users" && "active",
       icon: <Users className="feather feather-message-square nav-icon" />,
-    }
+    },
   ];
   return (
     <>

@@ -9,20 +9,20 @@ import RequireAuth from "./RequireAuth";
 
 const AllRoutes = () => {
   return (
-      <Routes>
-          {/* Public Route */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+    <Routes>
+      {/* Public Route */}
 
-          {/* Protective Route */}
-          {/* <Route element={<RequireAuth />} ></Route> */}
-        <Route path="/" element={<WithAdminLayout />}>
-          <Route element={<RequireAuth />}>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="users" element={<Users />} />
-          </Route>
+      {/* Protective Route */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/" element={<WithAdminLayout />}>
+        <Route element={<RequireAuth />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="users" element={<Users />} />
         </Route>
-      </Routes>
+        <Route path="/*" element={"404 not found!"} />
+      </Route>
+    </Routes>
   );
 };
 
